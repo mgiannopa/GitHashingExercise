@@ -1,1 +1,1 @@
-All the projects for the Operation Systems calss, ECE AUTH.
+All the projects for the Operating Systems calss, ECE AUTH.
