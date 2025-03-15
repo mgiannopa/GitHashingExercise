@@ -1,0 +1,36 @@
+/home/mgiannopa/quiz-1/myfiles/folder10538/file10538.txt
+      5 banana
+      6 tomato
+      9 chair
+/home/mgiannopa/quiz-1/myfiles/folder10539/file10539.txt
+      8 banana
+      5 tomato
+      7 chair
+/home/mgiannopa/quiz-1/myfiles/folder10540/file10540.txt
+      8 banana
+      7 tomato
+      5 chair
+/home/mgiannopa/quiz-1/myfiles/folder10541/file10541.txt
+     10 banana
+      7 tomato
+      3 chair
+/home/mgiannopa/quiz-1/myfiles/folder10542/file10542.txt
+      9 banana
+      6 tomato
+      5 chair
+/home/mgiannopa/quiz-1/myfiles/folder10543/file10543.txt
+      6 banana
+      8 tomato
+      6 chair
+/home/mgiannopa/quiz-1/myfiles/folder10544/file10544.txt
+      8 banana
+      9 tomato
+      3 chair
+/home/mgiannopa/quiz-1/myfiles/folder10545/file10545.txt
+      7 banana
+      7 tomato
+      6 chair
+/home/mgiannopa/quiz-1/myfiles/folder10546/file10546.txt
+      7 banana
+      4 tomato
+      9 chair

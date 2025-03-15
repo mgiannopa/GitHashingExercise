@@ -1,0 +1,7 @@
+clear 
+mkdir ~/quiz-1
+for i in {10538..10546}; do  filename="file$i.txt"; foldername="folder$i"; mkdir -p ~/quiz-1/myfiles/$foldername; touch ~/quiz-1/myfiles/$foldername/$$filename; done
+for i in {10538..10546}; do filename="file$i.txt"; foldername="folder$i"; path=~/quiz-1/myfiles/$foldername/$filename; for j in {1..20}; do words=("banana" "chair" "tomato"); random_word=${words[$RANDOM % ${#words[@]}]}; echo $random_word >> $path; done ; done
+for i in {10538..10546}; do file="quiz-1/myfiles/folder$i/file$i.txt"; path="/home/mgiannopa/quiz-1/myfiles/folder$i/file$i.txt"; echo "$path" >>  quiz-1/report.txt; grep -o "banana" $file | uniq -c >> quiz-1/report.txt; grep -o "tomato" $file | uniq -c >> quiz-1/report.txt; grep -o "chair" $file | uniq -c >> quiz-1/report.txt; done
+touch quiz-1/quiz1.log
+history >> /home/mgiannopa/quiz-1/quiz1.log 
