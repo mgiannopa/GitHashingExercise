@@ -1,0 +1,58 @@
+function cleanup
+    set -l target_directory $argv[1]
+    set -l days_modified $argv[2]
+    set -l recursive $argv[3]
+    set -l dry_run $argv[4]
+    set -l excluded_files_dirs $argv[5]
+    set -l sort_type $argv[6]
+    set -l confirmation $argv[7]
+
+    set -l files_to_delete
+    command find $target_directory -type f -mtime +$days_modified | read -la files_to_delete
+
+    if test $recursive = true
+        set find_cmd "$find_cmd -name '*'"
+    else
+        set find_cmd "$find_cmd -maxdepth 1"
+    end
+
+    # Exclude files and directories if the exclusion list is non-empty
+    if not test -z "$excluded_files_dirs"
+        set -l files_to_keep
+        for excluded in $excluded_files_dirs
+            set -l excluded_files (echo $files_to_delete | grep -v $excluded)
+            set -l files_to_keep (echo $files_to_keep $excluded_files)
+        end
+        set -l files_to_delete $files_to_keep
+    end
+
+    # Sort files
+    if test "$sort_type" = "asc"
+        set -l files_to_delete (echo $files_to_delete | xargs -I{} du -b {} | sort -n -k1 | awk '{print $2}')
+    else if test "$sort_type" = "desc"
+        set -l files_to_delete (echo $files_to_delete | xargs -I{} du -b {} | sort -n -k1 -r | awk '{print $2}')
+    end
+
+    # Display files to be deleted in dry-run mode
+    if test $dry_run = true
+        echo "Files to be deleted:"
+        echo $files_to_delete
+    end
+
+    if test $confirmation = true
+        echo -n "Warning!! Do you want to delete these files? (y/n)"
+        set -l response (read)
+        if test "$response" != "y"
+            echo "Aborted."
+            return
+        end
+    end
+
+    # Delete files
+    for file in $files_to_delete
+        rm -r $file
+        echo "Deleted the: $file"
+    end
+
+    echo "Cleanup has ended."
+end
